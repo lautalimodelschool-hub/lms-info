@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #fffbf9; /* Extremely light warm peach */
+    --foreground: #1e293b; /* slate-800 */
+    --card: #ffffff;
+    --card-border: #ffedd5; /* orange-100 */
+    --accent: #f97316; /* orange-500 */
+    --secondary: #fff7ed; /* orange-50 */
+  }
+
+  .dark {
+    --background: #020617; /* slate-950 */
+    --foreground: #f1f5f9; /* slate-100 */
+    --card: #1e293b; /* slate-800 */
+    --card-border: #334155; /* slate-700 */
+    --accent: #f97316;
+    --secondary: #1e293b;
+  }
+
+  body {
+    @apply antialiased select-none;
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-touch-callout: none; /* Disable iOS long press popup */
+  }
+
+  input, textarea {
+    @apply select-auto;
+    -webkit-touch-callout: default;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom Transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
